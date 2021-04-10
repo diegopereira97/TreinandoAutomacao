@@ -19,10 +19,12 @@ public class TesteCompra {
         WebElement Login = navegador.findElement(By.id("nav-belt"));
         Login.findElement(By.id("nav-link-accountList-nav-line-1")).click();
         Login.findElement(By.id("nav-flyout-ya-signin")).click();
-        Login.findElement(By.id("ap_email")).sendKeys("diego.dick97@gmail");
-        Login.findElement(By.id("continue")).click();
 
-     
+        WebElement LoginEmail = navegador.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div[1]/form/div/div/div"));
+        LoginEmail.findElement(By.name("email")).sendKeys("diego.dick97@gmail");
+        LoginEmail.findElement(By.id("continue")).click();
+
+
 
 
     }
