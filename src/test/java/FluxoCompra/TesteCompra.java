@@ -37,7 +37,7 @@ public class TesteCompra {
     }
 
     @Test
-    public void testListaDestaque (){
+    public void testListaDestaque () {
         WebElement EscolherProduto = navegador.findElement(By.xpath("//*[@id=\"nav-main\"]/div[1]"));
         EscolherProduto.findElement(By.id("nav-hamburger-menu")).click();
         WebElement Destaques = navegador.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[1]/div"));
@@ -58,9 +58,23 @@ public class TesteCompra {
         Assert.assertEquals("Novo Echo Dot (4ª Geração): Smart Speaker com Alexa - Cor Preta", "Novo Echo Dot (4ª Geração): Smart Speaker com Alexa - Cor Preta");
         //MaisVendidos.findElement(By.xpath("//*[@id=\"zg_left_col1\"]/div[1]/div[1]/a"));
 
+    }
+
+    @Test
+    public void testConteudoDigital () {
+       WebElement EscolherProduto = navegador.findElement(By.xpath("//*[@id=\"nav-main\"]/div[1]"));
+       EscolherProduto.findElement(By.id("nav-hamburger-menu")).click();
+       WebElement ConteudoDigital = navegador.findElement(By.cssSelector("#hmenu-content > ul.hmenu.hmenu-visible > li:nth-child(6)"));
+       ConteudoDigital.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[7]")).click();
+       WebElement AmazonFire = navegador.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[2]/li[2]"));
+       String FireAmazon = AmazonFire.getText();
+       Assert.assertEquals("amazon fire tv", "amazon fire tv");
 
 
     }
+
+
+
 
     @After
     public void tearDown () {
