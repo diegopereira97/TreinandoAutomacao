@@ -44,18 +44,19 @@ public class TesteCompra {
         Destaques.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[2]")).click();
         //Destaques.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[3]"));
         //Destaques.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[4]"));
-        WebElement MaisVendidos = navegador.findElement(By.id("zg_col1"));
+        WebElement MaisVendidos = navegador.findElement(By.id("zg_banner_text_wrapper"));
         String Maisvendidos = MaisVendidos.getText();
-        Assert.assertEquals("Mais vendidos", "Mais vendidos");
+        Assert.assertEquals("Mais vendidos", Maisvendidos);
         WebElement QualquerDepartamento = navegador.findElement(By.id("zg_browseRoot"));
         QualquerDepartamento.findElement(By.cssSelector("#zg_browseRoot > ul > li:nth-child(14) > a")).click();
-        WebElement Eletronicos = navegador.findElement(By.id("zg-right-col"));
-        String ListaEletronicos = Eletronicos.getText();
-        Assert.assertEquals("Mais Vendidos em Eletrônicos", "Mais Vendidos em Eletrônicos");
-        Eletronicos.findElement(By.cssSelector("#zg-ordered-list > li:nth-child(1) > span > div > span")).click();
-        WebElement Eletronico1 = navegador.findElement(By.id("productTitle"));
-        String NomedoEletronico = Eletronico1.getText();
-        Assert.assertEquals("Novo Echo Dot (4ª Geração): Smart Speaker com Alexa - Cor Preta", "Novo Echo Dot (4ª Geração): Smart Speaker com Alexa - Cor Preta");
+        WebElement Eletronicos = navegador.findElement(By.xpath("//*[@id=\"zg-right-col\"]/h1"));
+        String NomedaPagina = Eletronicos.getText();
+        Assert.assertEquals("Mais Vendidos em Eletrônicos", NomedaPagina);
+        WebElement ListaEletronicos = navegador.findElement(By.id("zg-center-div"));
+        ListaEletronicos.findElement(By.cssSelector("#zg-ordered-list > li:nth-child(2) > span > div > span > a > span > div")).click();
+        WebElement ItemEletronico2 = navegador.findElement(By.id("productTitle"));
+        String NomedoEletronico = ItemEletronico2.getText();
+        Assert.assertEquals("Novo Echo Dot (4ª Geração): Smart Speaker com Alexa - Cor Preta", NomedoEletronico);
         //MaisVendidos.findElement(By.xpath("//*[@id=\"zg_left_col1\"]/div[1]/div[1]/a"));
 
     }
