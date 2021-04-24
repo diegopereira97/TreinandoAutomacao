@@ -8,12 +8,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
-public class TesteCompra {
+public class TesteCompra
+{
 
     private WebDriver navegador;
+    private Object Actions;
 
     @Before
     public void Login () {
@@ -36,9 +39,19 @@ public class TesteCompra {
         Assert.assertEquals("Olá, diego", "Olá, diego");
     }
 
+
     @Test
+    public void PaginaHome () {
+        WebElement MenuMaisVendido = navegador.findElement(By.id("nav-xshop-container"));
+        MenuMaisVendido.findElement(By.cssSelector("#nav-xshop > a:nth-child(2)")).click();
+        WebElement MaisVendido = navegador.findElement(By.id("zg_banner_text_wrapper"));
+        String Maisvendido = MaisVendido.getText();
+        Assert.assertEquals("Mais vendidos", Maisvendido);
+    }
+
+        @Test
     public void testListaDestaque () {
-        WebElement EscolherProduto = navegador.findElement(By.xpath("//*[@id=\"nav-main\"]/div[1]"));
+        WebElement EscolherProduto = navegador.findElement(By.id("nav-main"));
         EscolherProduto.findElement(By.id("nav-hamburger-menu")).click();
         WebElement Destaques = navegador.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[1]/div"));
         Destaques.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[2]")).click();
@@ -61,25 +74,15 @@ public class TesteCompra {
 
     }
 
-    @Test
-    public void testConteudoDigital () {
-       WebElement EscolherProduto = navegador.findElement(By.xpath("//*[@id=\"nav-main\"]/div[1]"));
-       EscolherProduto.findElement(By.id("nav-hamburger-menu")).click();
-       WebElement ConteudoDigital = navegador.findElement(By.cssSelector("#hmenu-content > ul.hmenu.hmenu-visible > li:nth-child(6)"));
-       ConteudoDigital.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[7]")).click();
-       WebElement AmazonFire = navegador.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[2]/li[2]"));
-       String FireAmazon = AmazonFire.getText();
-       Assert.assertEquals("amazon fire tv", "amazon fire tv");
-
-
-    }
-
-
-
-
     @After
-    public void tearDown () {
-        navegador.quit();
+    public void SairdaConta()  {
+        //Mover mouse para efetuar logout
+        WebElement Sair = navegador.findElement(By.id("nav-link-accountList-nav-line-1"));
+        Actions actions = new Actions(navegador);
+        actions.moveToElement(Sair).build().perform();
+        WebElement SairdaConta =  navegador.findElement(By.id("nav-al-your-account"));
+        SairdaConta.findElement(By.cssSelector("#nav-item-signout")).click();
+       navegador.quit();
     }
 
 }
