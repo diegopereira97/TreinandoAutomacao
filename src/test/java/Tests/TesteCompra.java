@@ -1,5 +1,6 @@
-package FluxoCompra;
+package Tests;
 
+import Suporte.Web;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,11 +21,7 @@ public class TesteCompra
 
     @Before
     public void Login () {
-     System.setProperty("webdriver.chrome.driver", "D:\\Estudos\\Automação\\Drivers\\chromedriver.exe");
-     navegador = new ChromeDriver();
-     navegador.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-     navegador.get("https://www.amazon.com.br/");
-     navegador.manage().window().maximize();
+        navegador = Web.createChrome();
 
         WebElement Login = navegador.findElement(By.id("nav-belt"));
         Login.findElement(By.id("nav-link-accountList-nav-line-1")).click();
