@@ -18,7 +18,7 @@ public class LoginPageObject {
     private WebElement BotaoContinuar;
 
     @FindBy (id = "ap_password")
-    private WebElement InformarSenh;
+    private WebElement InformarSenha;
 
     @FindBy (id = "signInSubmit")
     private WebElement BotaoSubmit;
