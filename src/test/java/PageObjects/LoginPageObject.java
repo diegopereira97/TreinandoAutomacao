@@ -3,13 +3,9 @@ package PageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPageObject {
+public class LoginPageObject
+{
 
-    private final String Email = "diego.dick97@gmail.com";
-    private final String Senha = "toloveru@123";
-
-    @FindBy (id = "nav-link-accountList-nav-line-1")
-    private WebElement ClickLogin;
 
     @FindBy (name = "email")
     private WebElement InformarEmail;
@@ -23,11 +19,11 @@ public class LoginPageObject {
     @FindBy (id = "signInSubmit")
     private WebElement BotaoSubmit;
 
-    public void DigitarEmail () {
-        this.InformarEmail.sendKeys(Email);
+    public void DigitarEmail (String email) {
+        InformarEmail.sendKeys(email);
     }
-    public void DigitarSenha (){
-        this.InformarSenha.sendKeys(Senha);
+    public void DigitarSenha (String senha){
+        InformarSenha.sendKeys(senha);
     }
     public void ClicarSubmit (){
         this.BotaoSubmit.submit();
@@ -35,8 +31,5 @@ public class LoginPageObject {
     }
 
 
-
-
-
-    }
+ }
 
