@@ -1,6 +1,6 @@
-package Tests;
+package tests;
 
-import Utils.Web;
+import utils.Web;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
