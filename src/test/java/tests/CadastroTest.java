@@ -1,13 +1,12 @@
 package tests;
 
-import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import pageobjects.CadastroPageObject;
-import pageobjects.HomePageObject;
+import pageobjects.CommonPageObject;
 import utils.Web;
 
-public class TestCadastroComSucesso {
+public class CadastroTest {
 
     private WebDriver navegador;
 
@@ -19,9 +18,9 @@ public class TestCadastroComSucesso {
 
 @Test
     public void fazerCadastro (){
-        HomePageObject HomePage = new HomePageObject(navegador);
-        HomePage.moverMouse();
-        HomePage.clicarComeceAqui();
+        CommonPageObject CommonPage = new CommonPageObject(navegador);
+        CommonPage.moverMouse();
+        CommonPage.clicarComeceAqui();
 
         CadastroPageObject CadastroPage = new CadastroPageObject(navegador);
         CadastroPage.digitarNome("Nome dome");

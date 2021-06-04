@@ -7,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPageObject
 {
-    
-    private WebDriver navegador;
+
+    protected final WebDriver navegador;
 
     public LoginPageObject(WebDriver navegador) {
         PageFactory.initElements(navegador, this);
@@ -27,10 +27,12 @@ public class LoginPageObject
     @FindBy (id = "signInSubmit")
     private WebElement botaoSubmit;
 
+    //Login com sucesso.
     public void digitarEmail (String email) {
         informarEmail.sendKeys(email);
     }
     public void clicarContinuar (){
+
         botaoContinuar.click();
     }
     public void digitarSenha (String senha) {

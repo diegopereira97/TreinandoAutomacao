@@ -1,18 +1,15 @@
 package tests;
 
-import org.junit.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import pageobjects.CommonPageObject;
 import pageobjects.HomePageObject;
 import pageobjects.LoginPageObject;
 import utils.Web;
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-public class TestLogin {
+public class LoginTest {
 
     private WebDriver navegador;
 
@@ -23,16 +20,19 @@ public class TestLogin {
     }
 
 @Test
-    public void fazerLoginValido () {
-        HomePageObject HomePage = new HomePageObject(navegador);
-        HomePage.moverMouse();
-        HomePage.clicarLogin();
+    public void fazerLoginValido () throws InterruptedException {
+        CommonPageObject CommonPage = new CommonPageObject(navegador);
+        CommonPage.moverMouse();
+        CommonPage.clicarLogin();
 
         LoginPageObject LoginPage = new LoginPageObject(navegador);
         LoginPage.digitarEmail("diego.dick97@gmail.com");
         LoginPage.clicarContinuar();
         LoginPage.digitarSenha("toloveru123");
         LoginPage.clicarSubmit();
+
+        HomePageObject HomePage = new HomePageObject(navegador);
+        HomePage.contaNome("Olá, diego");
 
     }
 
