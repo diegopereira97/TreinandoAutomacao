@@ -1,15 +1,17 @@
 package tests;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import pageobjects.CommonPageObject;
 import pageobjects.HomePageObject;
 import pageobjects.LoginPageObject;
+import pageobjects.ResultadodaPesquisaPageObject;
 import utils.Web;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Test;
 
-public class LoginTest {
+public class PesquisaTest {
 
     private WebDriver navegador;
 
@@ -20,7 +22,9 @@ public class LoginTest {
     }
 
 @Test
-    public void fazerLoginValido () throws InterruptedException {
+    public void fazerPesquisa () throws InterruptedException{
+        String termoDePesquisa = "Echo Dot 8";
+
         CommonPageObject CommonPage = new CommonPageObject(navegador);
         CommonPage.moverMouse();
         CommonPage.clicarLogin();
@@ -32,13 +36,21 @@ public class LoginTest {
         LoginPage.clicarSubmit();
 
         HomePageObject HomePage = new HomePageObject(navegador);
-        HomePage.contaNome("Olá, Diego");
+        HomePage.pesquisaInserir(termoDePesquisa);
+
+        ResultadodaPesquisaPageObject PesquisaPage = new ResultadodaPesquisaPageObject(navegador);
+        PesquisaPage.palavraChaveDoTermoDeUso(termoDePesquisa);
+        PesquisaPage.ordemDoResultado();
+        boolean resultado = PesquisaPage.validarResultados(termoDePesquisa);
+
+        Assert.assertTrue(resultado);
 
     }
-
 @AfterMethod
-    public void fecharNavegador() {
+    public void fecharNavegador(){
         navegador.close();
         navegador.quit();
     }
+
+
 }

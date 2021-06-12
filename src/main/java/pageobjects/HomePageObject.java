@@ -21,11 +21,11 @@ import static org.junit.Assert.assertEquals;
 
 public class HomePageObject {
 
-    protected WebDriver navegagor;
+    protected WebDriver navegador;
 
     public HomePageObject(WebDriver navegador) {
         PageFactory.initElements(navegador, this);
-        this.navegagor = navegador;
+        this.navegador = navegador;
 
     }
 

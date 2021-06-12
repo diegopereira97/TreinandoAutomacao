@@ -23,10 +23,10 @@ public class TesteCompra
         WebElement Login = navegador.findElement(By.id("nav-belt"));
         Login.findElement(By.id("nav-link-accountList-nav-line-1")).click();
         WebElement LoginEmail = navegador.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div[1]/form/div/div/div"));
-        LoginEmail.findElement(By.name("email")).sendKeys("diego.dick97@gmail.com");
+        LoginEmail.findElement(By.name("email")).sendKeys("testeautomacao97@gmail.com");
         LoginEmail.findElement(By.id("continue")).click();
         WebElement LoginSenha = navegador.findElement(By.id("a-page"));
-        LoginSenha.findElement(By.id("ap_password")).sendKeys("toloveru123");
+        LoginSenha.findElement(By.id("ap_password")).sendKeys("Toloveru123");
         LoginSenha.findElement(By.id("signInSubmit")).submit();
         WebElement Home = navegador.findElement(By.id("nav-link-accountList-nav-line-1"));
         String Usuario = Home.getText();
